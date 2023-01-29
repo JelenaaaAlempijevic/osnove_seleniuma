@@ -8,33 +8,37 @@ package d26_01_2023;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Duration;
+
 public class Zadatak4 {
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
 
+        System.setProperty("webdriver.chrome.driver","drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         driver.manage().window().maximize();
         driver.get("https://geodata.solutions/");
 
-        Select objSelect = new Select(driver.findElement(By.name("country")));
-        objSelect.selectByValue("Serbia");
+        WebElement dropDown = driver.findElement(By.id("countryId"));
+        dropDown.click();
+        dropDown.findElement(By.xpath("//option[@countryId='BE']")).click();
         Thread.sleep(1000);
-
-        Select objSelect1 = new Select(driver.findElement(By.name("state")));
-        objSelect.selectByValue("Central Serbia");
+        dropDown = driver.findElement(By.id("stateId"));
+        dropDown.click();
+        dropDown.findElement(By.xpath("//*[@value='Flanders']")).click();
         Thread.sleep(1000);
-
-        Select objSelect2 = new Select(driver.findElement(By.name("city")));
-        objSelect.selectByValue("Nis");
-
+        dropDown = driver.findElement(By.id("cityId"));
+        dropDown.click();
+        dropDown.findElement(By.xpath("//*[@value='Balen']")).click();
 
         Thread.sleep(5000);
         driver.quit();
-
 
 
     }

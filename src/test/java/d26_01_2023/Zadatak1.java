@@ -21,6 +21,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,15 +54,13 @@ public class Zadatak1 {
             }
         }
 
-        List<WebElement> total = driver.findElements(By.xpath("//ul[@class='todo-list']/li"));
-        for (int i = 0; i < total.size(); i++) {
-           WebElement delete = driver.findElement(By.xpath("//li[last()]//button[contains(@class, 'destroy')]"));
-           driver.findElement(By.className("destroy")).click();
-           if(total.size()==0){
+        List<WebElement> todosTotal = driver.findElements(By.xpath("//ul[@class='todo-list']/li"));
+        for (int i = 0; i < todosTotal.size(); i++) {
+            driver.findElement(By.className("destroy")).click();
+            if(todosTotal.size()==0){
                 System.out.println("Broj to do-a je 0");
             }
-       }
-
+        }
 
         Thread.sleep(5000);
         driver.quit();
