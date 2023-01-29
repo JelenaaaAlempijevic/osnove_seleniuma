@@ -16,19 +16,21 @@ import java.util.List;
 //Postavite implicitno cekanje za ucitavanje stranice i trazenje elemenata na 10s
 public class Zadatak1 {
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
 
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Thread.sleep(1000);
+        driver.manage().window().maximize();
         driver.get("https://mdbootstrap.com/docs/standard/components/toasts/#section-basic-example");
+        Thread.sleep(1000);
 
-
-        List<WebElement> elements = driver.findElements(By.xpath("//*[@type='button']"));
+        List<WebElement> elements = driver.findElements (By.xpath("//button[contains(@id, 'basic-')]"));
         for (int i = 0; i < elements.size(); i++) {
-            elements.get(i).findElement(By.linkText("//button[text()='Primary']")).click();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
+            elements.get(i).click();
+            Thread.sleep(500);
 
         }
 
