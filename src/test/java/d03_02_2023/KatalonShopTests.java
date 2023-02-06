@@ -28,7 +28,44 @@ package d03_02_2023;
 //Kliknite na my account link
 //Klik na login dugme
 //Verifikovati da je prikazana poruka Error: Username is required.
-
+//
+//Test #4:  Verify error is displayed when password is missing
+//	Prioritet = 40
+//	Koraci:
+//Kliknite na my account link
+//Unesite username customer
+//Klik na login dugme
+//Verifikovati da je prikazana poruka ERROR: The password field is empty.
+//
+//Test #5:  Verify error is displayed when password is wrong
+//	Prioritet = 50
+//	Koraci:
+//Kliknite na my account link
+//Unesite username customer
+//Unesite nevalidan pass invalidpassword
+//Klik na login dugme
+//Verifikovati da je prikazana poruka ERROR: The password you entered for the username customer is incorrect. Lost your password?
+//
+//
+//
+//Test #6:  Verify error is displayed when user does not exist
+//	Prioritet = 60
+//	Koraci:
+//Kliknite na my account link
+//Unesite username invaliduser
+//Unesite nevalidan pass (ex: pass1234)
+//Klik na login dugme
+//Verifikovati da je prikazana poruka ERROR: Invalid username. Lost your password?
+//
+//Test #7:  Verify successful login
+//	Prioritet = 70
+//	Koraci:
+//Kliknite na my account link
+//Unesite username customer
+//Unesite validan pass crz7mrb.KNG3yxv1fbn
+//Klik na login dugme
+//Verifikovati na stranici pise Hello Katalon Parlitul_Changed
+//	Dopunite pageve za sve sto je potrebno za ove testove, ako je potrebno kreirajte i nove pageve
 import com.sun.org.glassfish.gmbal.Description;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -63,7 +100,7 @@ public class KatalonShopTests {
         driver.get(baseURL);
     }
 
-    @Test(priority = 1)
+    @Test(priority = 10)
     @Description("TC1 - Verify that adding to cart works")
     public void addToCart(){
         driver.get(baseURL + "/product/flying-ninja/");
